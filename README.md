@@ -7,11 +7,11 @@ e-mail, text files etc...
 # Installation
 
 * **On linux:**
-Download **figlet** from [http://www.figlet.org/](http://www.figlet.org/) and build it on your sistem.  
-Then compile **Ascii Design** (see INSTALL file). Run **Ascii Design** and set **figlet** path and **figlet fonts** path.  
+  Download **figlet** from [http://www.figlet.org/](http://www.figlet.org/) and build it on your sistem.  
+  Then compile **Ascii Design** (see INSTALL file). Run **Ascii Design** and set **figlet** path and **figlet fonts** path.  
 
 * **On Windows:**
-Run the installer; figlet binary and figlet fonts are included.  
+  Run the installer; figlet binary and figlet fonts are included.  
 
 Enjoy!  
 
@@ -22,19 +22,19 @@ For further info about **Ascii Design**: [https://sourceforge.net/projects/ascii
 
 # License
 
-Ascii Design is an ascii-art program based on figlet engine.
-Copyright (C) 2009 Francesco Mondello
-
-This program is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License
-as published by the Free Software Foundation; either version 2
-of the License, or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+    Ascii Design is an ascii-art program based on figlet engine.
+    Copyright (C) 2009 Francesco Mondello
+    
+    This program is free software; you can redistribute it and/or
+    modify it under the terms of the GNU General Public License
+    as published by the Free Software Foundation; either version 2
+    of the License, or (at your option) any later version.
+    
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+    
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
