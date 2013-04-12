@@ -1,0 +1,11 @@
+<RCC>
+  <qresource prefix="Toolbar" >
+    <file>pics/fileopen.png</file>
+    <file>pics/ascii-design.png</file>
+    <file>pics/configure.png</file>
+    <file>pics/filesaveas.png</file>
+    <file>pics/filesave.png</file>
+    <file>pics/help.png</file>
+    <file>pics/info.png</file>
+  </qresource>
+</RCC>
