@@ -1,5 +1,7 @@
 # Ascii Design
 
+![alt text](http://ascii-design.sourceforge.net/ascii-design-win7.png "Ascii Design on Windows")
+
 **Ascii Design** is an **ascii-art** program based on [figlet](http://www.figlet.org/) engine.  
 You can create art based text for many types of decorations for web sites,  
 e-mail, text files etc...
@@ -18,7 +20,7 @@ Enjoy!
 # Author
 
 Francesco Mondello  
-For further info about **Ascii Design**: [https://sourceforge.net/projects/ascii-design/](https://sourceforge.net/projects/ascii-design/).  
+For further info about **Ascii Design**: [http://ascii-design.sourceforge.net/](http://ascii-design.sourceforge.net/).  
 
 # License
 
