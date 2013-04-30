@@ -1,6 +1,6 @@
 /*
 * This file is part of Ascii Design, an open-source cross-platform Ascii Art editor
-* (C) Faster 2004 - 2009
+* (C) Faster 2009 - 2013
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -23,20 +23,21 @@
 
 #ifndef DIALOGINFOIMPL_H
 #define DIALOGINFOIMPL_H
-//
+
 #include <QDialog>
 #include "ui_infodialog.h"
-//
+
 class DialogInfoImpl : public QDialog, public Ui::DialogInfo
 {
 Q_OBJECT
 public:
 	DialogInfoImpl( QWidget * parent = 0, Qt::WFlags f = 0 );
+
 private slots:
+    void openPaypalLink();
+
 };
 #endif
-
-
 
 
 

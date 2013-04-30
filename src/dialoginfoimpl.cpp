@@ -1,6 +1,6 @@
 /*
 * This file is part of Ascii Design, an open-source cross-platform Ascii Art editor
-* (C) Faster 2004 - 2009
+* (C) Faster 2009 - 2013
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -21,13 +21,19 @@
 *
 */
 
+#include <QDesktopServices>
+#include <QUrl>
 #include "dialoginfoimpl.h"
-//
+
 DialogInfoImpl::DialogInfoImpl( QWidget * parent, Qt::WFlags f) 
 	: QDialog(parent, f)
 {
 	setupUi(this);
+    connect(pushDonate, SIGNAL(clicked()), this, SLOT(openPaypalLink()));
 	connect(buttonOk, SIGNAL(clicked()), this, SLOT(close()));
 }
-//
 
+void DialogInfoImpl::openPaypalLink()
+{
+    QDesktopServices::openUrl(QUrl("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HFD8FL89SU5LU", QUrl::TolerantMode));
+}

@@ -1,6 +1,6 @@
 /*
 * This file is part of Ascii Design, an open-source cross-platform Ascii Art editor
-* (C) Faster 2004 - 2009
+* (C) Faster 2009 - 2013
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@
 #include "options.h"
 #include "dialogoptionsimpl.h"
 #include "dialoginfoimpl.h"
-//
+
 class MainWindowImpl : public QMainWindow, public Ui::MainWindow
 {
 Q_OBJECT
@@ -42,15 +42,17 @@ public:
 private:
 	bool saveFile(const QString &fileName);
 	void setActions();
-
 	void loadFonts();
 	void loadOptions();
+
 	FigletManager *fMan;
 	Options *opt;
 	QString fontsPath;
 	QString figletPath;
 	QComboBox *comboFonts;
 	QString currentDocument;
+    QString m_alignment;
+
 private slots:
 	void writeText();
 	bool showOptionsDialog();
@@ -58,7 +60,11 @@ private slots:
 	void openText();
 	bool save();
 	bool saveAs();
+
+    void changeAlignment();
+
 	
 	void showInfo();
+    void openPaypalLink();
 };
 #endif

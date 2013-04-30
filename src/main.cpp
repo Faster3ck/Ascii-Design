@@ -1,6 +1,6 @@
 /*
 * This file is part of Ascii Design, an open-source cross-platform Ascii Art editor
-* (C) Faster 2004 - 2009
+* (C) Faster 2009 - 2013
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -23,10 +23,15 @@
 
 #include <QApplication>
 #include "mainwindowimpl.h"
-//
+
+#define VERSION "1.0"
+
 int main(int argc, char ** argv)
 {
 	QApplication app( argc, argv );
+
+    QCoreApplication::setApplicationVersion(VERSION);
+
 	MainWindowImpl win;
 	win.show(); 
 	app.connect( &app, SIGNAL( lastWindowClosed() ), &app, SLOT( quit() ) );

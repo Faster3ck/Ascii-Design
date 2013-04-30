@@ -1,6 +1,6 @@
 /*
 * This file is part of Ascii Design, an open-source cross-platform Ascii Art editor
-* (C) Faster 2004 - 2009
+* (C) Faster 2009 - 2013
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -22,17 +22,14 @@
 */
 
 #include "mainwindowimpl.h"
-//
+
 MainWindowImpl::MainWindowImpl( QWidget * parent, Qt::WFlags f)
 	: QMainWindow(parent, f)
 {
 	setupUi(this);
 	
-	#ifdef Q_OS_WIN32
-	qApp->setStyle("Plastique");
-	#endif
-	
 	currentDocument = "";
+    m_alignment = "-x";
 	
 	comboFonts = new QComboBox;
 	toolBar->addWidget(comboFonts);
@@ -61,28 +58,33 @@ MainWindowImpl::MainWindowImpl( QWidget * parent, Qt::WFlags f)
 	connect(comboFonts, SIGNAL(currentIndexChanged(int)), this, SLOT(writeText()));
 	
 	setActions();
+
+    QActionGroup *anActionGroup = new QActionGroup(this);
+    anActionGroup->addAction(actionAlign_left);
+    anActionGroup->addAction(actionAlign_center);
+    anActionGroup->addAction(actionAlign_right);
 }
-//
+
 void MainWindowImpl::writeText()
 {
 	QString myText = textEditNormal->toPlainText();
 	QString myFont = comboFonts->currentText();
-	QByteArray text = fMan->makeText(myText, QString("%1/%2.flf").arg(fontsPath).arg(myFont));
+    QByteArray text = fMan->makeText(myText, m_alignment, QString("%1/%2.flf").arg(fontsPath).arg(myFont));
 	
-	/*#ifdef Q_OS_LINUX
+    textEditFiglet->setFont(QFont("DeJaVu Sans Mono"));
+
+    #ifdef Q_OS_LINUX
 	textEditFiglet->setFont(QFont("Monospace"));
 	#endif
 	
 	#ifdef Q_OS_WIN32
 	textEditFiglet->setFont(QFont("Courier"));
-	#endif*/
-	
-	textEditFiglet->setFont(QFont("DeJaVu Sans Mono"));
+    #endif
 	
 	textEditFiglet->setText(text);
 	opt->setLastFont(myFont);
 }
-//
+
 void MainWindowImpl::loadFonts()
 {
 	comboFonts->clear();
@@ -92,7 +94,7 @@ void MainWindowImpl::loadFonts()
 	for (int i = 0; i < fontsL.count(); i++)
 		comboFonts->addItem(fontsL.at(i).left(fontsL.at(i).size()-4));
 }
-//
+
 void MainWindowImpl::loadOptions()
 {
 	/* Load figlet path*/
@@ -109,7 +111,7 @@ void MainWindowImpl::loadOptions()
 		idx = comboFonts->findText(lastFont, Qt::MatchExactly);
 	comboFonts->setCurrentIndex(idx);
 }
-//
+
 bool MainWindowImpl::showOptionsDialog()
 {
 	dialogOptionsImpl *dialogOpt = new dialogOptionsImpl;
@@ -119,18 +121,23 @@ bool MainWindowImpl::showOptionsDialog()
 
 	return dlgState;
 }
-//
+
 void MainWindowImpl::setActions()
 {
 	connect(actionOpenFile, SIGNAL(triggered()), this, SLOT(openText()));
 	connect(actionSave, SIGNAL(triggered()), this, SLOT(save()));
 	connect(actionSaveAs, SIGNAL(triggered()), this, SLOT(saveAs()));
 	connect(actionClose, SIGNAL(triggered()), this, SLOT(close()));
+
+    connect(actionAlign_left, SIGNAL(triggered()), this, SLOT(changeAlignment()));
+    connect(actionAlign_center, SIGNAL(triggered()), this, SLOT(changeAlignment()));
+    connect(actionAlign_right, SIGNAL(triggered()), this, SLOT(changeAlignment()));
+
 	connect(actionConfigure, SIGNAL(triggered()), this, SLOT(showOptionsDialog()));
-	connect(actionHelp, SIGNAL(triggered()), this, SLOT(showInfo()));
+
 	connect(actionInfo, SIGNAL(triggered()), this, SLOT(showInfo()));
 }
-//
+
 void MainWindowImpl::openText()
 {
 	QString fileName = QFileDialog::getOpenFileName(this,
@@ -154,7 +161,7 @@ void MainWindowImpl::openText()
 		statusBar()->showMessage(tr("File loaded"), 2000);
 	}
 }
-//
+
 bool MainWindowImpl::save()
 {
     if (currentDocument.isEmpty()) {
@@ -163,7 +170,7 @@ bool MainWindowImpl::save()
         return saveFile(currentDocument);
     }
 }
-//
+
 bool MainWindowImpl::saveAs()
 {
     QString fileName = QFileDialog::getSaveFileName(this,
@@ -173,7 +180,7 @@ bool MainWindowImpl::saveAs()
     currentDocument = fileName;
     return saveFile(fileName);
 }
-//
+
 bool MainWindowImpl::saveFile(const QString &fileName)
 {
     QFile file(fileName);
@@ -193,9 +200,28 @@ bool MainWindowImpl::saveFile(const QString &fileName)
     statusBar()->showMessage(tr("File saved"), 2000);
     return true;
 }
-//
+
+void MainWindowImpl::changeAlignment()
+{
+    if (!this->textEditNormal->toPlainText().isEmpty()) {
+        if (actionAlign_right->isChecked())
+            m_alignment = "-r";
+        if (actionAlign_center->isChecked())
+            m_alignment = "-c";
+        if (actionAlign_left->isChecked())
+            m_alignment = "-x";
+
+        writeText();
+    }
+}
+
 void MainWindowImpl::showInfo()
 {
 	DialogInfoImpl dlg;
 	dlg.exec();
+}
+
+void MainWindowImpl::openPaypalLink()
+{
+    QDesktopServices::openUrl(QUrl("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HFD8FL89SU5LU", QUrl::TolerantMode));
 }

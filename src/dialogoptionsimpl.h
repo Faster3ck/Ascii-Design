@@ -1,6 +1,6 @@
 /*
 * This file is part of Ascii Design, an open-source cross-platform Ascii Art editor
-* (C) Faster 2004 - 2009
+* (C) Faster 2009 - 2013
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -23,21 +23,23 @@
 
 #ifndef DIALOGOPTIONSIMPL_H
 #define DIALOGOPTIONSIMPL_H
-//
+
 #include <QDialog>
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QDir>
 #include "ui_optionsman.h"
 #include "options.h"
-//
+
 class dialogOptionsImpl : public QDialog, public Ui::dialogOptions
 {
 Q_OBJECT
 public:
 	dialogOptionsImpl( QWidget * parent = 0, Qt::WFlags f = 0 );
+
 private:
 	Options *opt;
+
 private slots:
 	void openFiglet();
 	void openFigletFonts();

@@ -1,6 +1,6 @@
 /*
 * This file is part of Ascii Design, an open-source cross-platform Ascii Art editor
-* (C) Faster 2004 - 2009
+* (C) Faster 2009 - 2013
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -27,17 +27,17 @@ FigletManager::FigletManager(QString figletPath)
 {
 	figlet = figletPath;
 }
-//
-QByteArray FigletManager::makeText(QString text, QString font)
+
+QByteArray FigletManager::makeText(QString text, QString align, QString font)
 {
 	QString prog = figlet;
 	QProcess figletProcess;
-     figletProcess.start(prog, QStringList() << "-f" << font << text);
+    figletProcess.start(prog, QStringList() << align << "-f" << font << text);
      if (!figletProcess.waitForStarted())
-         return false;
+         return "";
 
      if (!figletProcess.waitForFinished())
-         return false;
+         return "";
 
      QByteArray result = figletProcess.readAll();
      return result;

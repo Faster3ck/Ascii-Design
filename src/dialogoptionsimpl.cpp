@@ -1,6 +1,6 @@
 /*
 * This file is part of Ascii Design, an open-source cross-platform Ascii Art editor
-* (C) Faster 2004 - 2009
+* (C) Faster 2009 - 2013
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@
 */
 
 #include "dialogoptionsimpl.h"
-//
+
 dialogOptionsImpl::dialogOptionsImpl( QWidget * parent, Qt::WFlags f) 
 	: QDialog(parent, f)
 {
@@ -37,7 +37,7 @@ dialogOptionsImpl::dialogOptionsImpl( QWidget * parent, Qt::WFlags f)
 	connect(buttonOk, SIGNAL(clicked()), this, SLOT(saveOptions()));
 	connect(buttonCancel, SIGNAL(clicked()), this, SLOT(reject()));
 }
-//
+
 void dialogOptionsImpl::openFiglet()
 {
 	#ifdef Q_OS_LINUX
@@ -54,7 +54,7 @@ void dialogOptionsImpl::openFiglet()
 	if (!fileName.isEmpty())
 		lineFigletPath->setText(fileName);
 }
-//
+
 void dialogOptionsImpl::openFigletFonts()
 {
 	QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"),
@@ -76,7 +76,7 @@ void dialogOptionsImpl::openFigletFonts()
 		QMessageBox::information(0, tr("Warning"),
                                  tr("Set figlet fonts directory!"));
 }
-//
+
 void dialogOptionsImpl::saveOptions()
 {
 	if (lineFigletPath->text().isNull()) {

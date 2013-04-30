@@ -1,6 +1,6 @@
 /*
 * This file is part of Ascii Design, an open-source cross-platform Ascii Art editor
-* (C) Faster 2004 - 2009
+* (C) Faster 2009 - 2013
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -22,26 +22,23 @@
 */
 
 #include "options.h"
+#include <QDesktopServices>
 
 Options::Options()
 {
-	#ifdef Q_OS_LINUX
-	QString myPath = QDir::homePath();
-	#endif
-	
-	#ifdef Q_OS_WIN32
-	QString myPath = QCoreApplication::applicationDirPath();
-	#endif
+	QString myPath =  QDesktopServices::storageLocation(QDesktopServices::DataLocation);
 	
 	settings = new QSettings(QString("%1/.ascii-design_options.conf").arg(myPath),
 			QSettings::IniFormat);
+
+	
 }
 /* Saves */
 void Options::setFigletPath(QString figletPath)
 {
 	settings->setValue("General/figletPath", figletPath);
 }
-//
+
 void Options::setFontsPath(QString fontPath)
 {
 	settings->setValue("General/fontPath", fontPath);
@@ -55,12 +52,12 @@ QString Options::figletPath()
 {
 	return settings->value("General/figletPath", "").toString();
 }
-//
+
 QString Options::lastFont()
 {
 	return settings->value("General/Last font", "").toString();
 }
-//
+
 QString Options::fontsPath()
 {
 	return settings->value("General/fontPath", "").toString();
