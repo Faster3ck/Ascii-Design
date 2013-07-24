@@ -36,17 +36,19 @@ dialogOptionsImpl::dialogOptionsImpl( QWidget * parent, Qt::WFlags f)
 	connect(buttonOpenFigletFonts, SIGNAL(clicked()), this, SLOT(openFigletFonts()));
 	connect(buttonOk, SIGNAL(clicked()), this, SLOT(saveOptions()));
 	connect(buttonCancel, SIGNAL(clicked()), this, SLOT(reject()));
+
+    // Check if figlet exists:
+    QString figletFile = autoDetect();
+    lineFigletPath->setText(figletFile);
 }
 
 void dialogOptionsImpl::openFiglet()
-{
-	#ifdef Q_OS_LINUX
-	QString figletFilter = "Figlet (figlet)";
-	#endif
-	
+{	
 	#ifdef Q_OS_WIN32
 	QString figletFilter = "Figlet (figlet.exe)";
-	#endif
+    #else
+    QString figletFilter = "Figlet (figlet)";
+    #endif
 	
 	QString fileName = QFileDialog::getOpenFileName(this,
 		tr("Open Figlet"), QDir::homePath(), figletFilter);
@@ -93,4 +95,22 @@ void dialogOptionsImpl::saveOptions()
 		opt->setFontsPath(lineFigletFontsPath->text());
 		accept();
 	}
+}
+
+QString dialogOptionsImpl::autoDetect()
+{
+    QFileInfo fi;
+    QString loc = "/usr/bin/figlet";
+
+    fi.setFile(loc);
+    if (fi.exists())
+        return loc;
+
+    loc = "/usr/local/bin/figlet";
+
+    fi.setFile(loc);
+    if (fi.exists())
+        return loc;
+
+    return "";
 }

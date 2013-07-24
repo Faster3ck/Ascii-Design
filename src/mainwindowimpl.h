@@ -24,9 +24,12 @@
 #ifndef MAINWINDOWIMPL_H
 #define MAINWINDOWIMPL_H
 //
-#include <QtGui>
+#include <QComboBox>
 #include <QMainWindow>
 #include <QMessageBox>
+#include <QTextStream>
+#include <QDesktopServices>
+#include <QUrl>
 #include "ui_mainwindow.h"
 #include "figletmanager.h"
 #include "figletfonts.h"

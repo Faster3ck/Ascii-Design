@@ -38,6 +38,8 @@ public:
 	dialogOptionsImpl( QWidget * parent = 0, Qt::WFlags f = 0 );
 
 private:
+    QString autoDetect();
+
 	Options *opt;
 
 private slots:

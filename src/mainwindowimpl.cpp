@@ -35,7 +35,7 @@ MainWindowImpl::MainWindowImpl( QWidget * parent, Qt::WFlags f)
 	toolBar->addWidget(comboFonts);
 	opt = new Options;
 	
-	if (!opt->optionsTest())
+    if (!opt->optionsTest()) {
 		/*On windows set auto path */
 		//
 		#ifdef Q_OS_WIN32
@@ -45,11 +45,11 @@ MainWindowImpl::MainWindowImpl( QWidget * parent, Qt::WFlags f)
 		#ifdef Q_OS_LINUX
 		if (!showOptionsDialog()) {
 			QMessageBox::information(0, tr("Warning"),
-                                 tr("Please, set correctly \"figlet path\" and \"figlet fonts path\" to use \"Ascii Design\"!"));
+                                 tr("Please, set correctly \"figlet path\" and \"figlet fonts path\" in order to use \"Ascii Design\"!"));
             close();
 		}
 		#endif
-
+    }
 	loadOptions();	// Loads inifile ".ascii-design_options.conf";
 	
 	fMan = new FigletManager(figletPath);
@@ -71,6 +71,7 @@ void MainWindowImpl::writeText()
 	QString myFont = comboFonts->currentText();
     QByteArray text = fMan->makeText(myText, m_alignment, QString("%1/%2.flf").arg(fontsPath).arg(myFont));
 	
+    // On Haiku
     textEditFiglet->setFont(QFont("DeJaVu Sans Mono"));
 
     #ifdef Q_OS_LINUX

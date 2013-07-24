@@ -29,6 +29,11 @@ DialogInfoImpl::DialogInfoImpl( QWidget * parent, Qt::WFlags f)
 	: QDialog(parent, f)
 {
 	setupUi(this);
+
+    QString titleVersion = QString("<html><head/><body><p><span style=\" font-size:14pt; font-weight:600;\">Ascii Design %1</span></p></body></html>")
+            .arg(QCoreApplication::applicationVersion());
+    this->labelTitleVersion->setText(titleVersion);
+
     connect(pushDonate, SIGNAL(clicked()), this, SLOT(openPaypalLink()));
 	connect(buttonOk, SIGNAL(clicked()), this, SLOT(close()));
 }
