@@ -1,9 +1,11 @@
 [Desktop Entry]
 Encoding=UTF-8
+Version=1.0
 Name=Ascii Design
+GenericName=Ascii art editor
 Comment=Start Ascii Design
 Exec=ascii-design
-Icon=ascii-design.png
+Icon=ascii-design
 Terminal=false
 Type=Application
-Categories=Office;
+Categories=Utility;TextEditor;
