@@ -23,8 +23,8 @@
 
 #include "mainwindowimpl.h"
 
-MainWindowImpl::MainWindowImpl( QWidget * parent, Qt::WFlags f)
-	: QMainWindow(parent, f)
+MainWindowImpl::MainWindowImpl(QWidget * parent)
+	: QMainWindow(parent)
 {
 	setupUi(this);
 	
