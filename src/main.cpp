@@ -24,7 +24,7 @@
 #include <QApplication>
 #include "mainwindowimpl.h"
 
-#define VERSION "1.0.3"
+#define VERSION "1.1.0"
 
 int main(int argc, char ** argv)
 {

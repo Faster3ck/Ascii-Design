@@ -125,7 +125,7 @@
    <item>
     <widget class="QLabel" name="label_5">
      <property name="text">
-      <string>(c) 2009 - 2013 Francesco Mondello GNU-GPL</string>
+      <string>(c) 2009 - 2014 Francesco Mondello GNU-GPL</string>
      </property>
     </widget>
    </item>

@@ -39,11 +39,20 @@ SET(ascii-design_RCS
     winicon.rc
 )
 
-FIND_PACKAGE(Qt4 REQUIRED)  
-INCLUDE(${QT_USE_FILE})  
-QT4_WRAP_UI(ascii-design_UIS_H ${ascii-design_UIS})  
-QT4_WRAP_CPP(ascii-design_MOC_SRCS ${ascii-design_MOC_HDRS})  
-QT4_ADD_RESOURCES(ascii-design_RESOURCES ${ascii-design_RESOURCES})  
+FIND_PACKAGE(Qt5Widgets)
+
+if (NOT Qt5Widgets_FOUND)
+	FIND_PACKAGE(Qt4 REQUIRED)
+	INCLUDE(${QT_USE_FILE})
+	QT4_WRAP_UI(ascii-design_UIS_H ${ascii-design_UIS})
+	QT4_WRAP_CPP(ascii-design_MOC_SRCS ${ascii-design_MOC_HDRS})
+	QT4_ADD_RESOURCES(ascii-design_RESOURCES ${ascii-design_RESOURCES})
+else()
+	set(CMAKE_AUTOMOC ON)
+	QT5_WRAP_UI(ascii-design_UIS_H ${ascii-design_UIS})
+	QT5_ADD_RESOURCES(ascii-design_RESOURCES ${ascii-design_RESOURCES})
+endif()
+
 
 ADD_DEFINITIONS(
 	-Wall 
@@ -75,8 +84,12 @@ ADD_EXECUTABLE(${GUI}
 IF( MINGW )
     SET_TARGET_PROPERTIES( ${GUI} PROPERTIES LINK_FLAGS "-mwindows" )
 ENDIF( MINGW )
-  
+
 TARGET_LINK_LIBRARIES(${GUI} ${QT_LIBRARIES}) 
+
+if (Qt5Widgets_FOUND)
+	qt5_use_modules(${GUI} Widgets Gui)
+endif()
 
 install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/ascii-design DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 install(FILES icon/ascii-design.desktop DESTINATION ${CMAKE_INSTALL_PREFIX}/share/applications)

@@ -26,8 +26,11 @@
 
 Options::Options()
 {
+#if QT_VERSION >= 0x050000
+	QString myPath =  QStandardPaths::writableLocation(QStandardPaths::DataLocation);
+#else
 	QString myPath =  QDesktopServices::storageLocation(QDesktopServices::DataLocation);
-	
+#endif
 	settings = new QSettings(QString("%1/.ascii-design_options.conf").arg(myPath),
 			QSettings::IniFormat);
 

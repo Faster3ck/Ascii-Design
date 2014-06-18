@@ -25,8 +25,8 @@
 #include <QUrl>
 #include "dialoginfoimpl.h"
 
-DialogInfoImpl::DialogInfoImpl( QWidget * parent, Qt::WFlags f) 
-	: QDialog(parent, f)
+DialogInfoImpl::DialogInfoImpl(QWidget * parent)
+	: QDialog(parent)
 {
 	setupUi(this);
 

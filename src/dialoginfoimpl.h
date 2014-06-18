@@ -31,7 +31,7 @@ class DialogInfoImpl : public QDialog, public Ui::DialogInfo
 {
 Q_OBJECT
 public:
-	DialogInfoImpl( QWidget * parent = 0, Qt::WFlags f = 0 );
+	DialogInfoImpl( QWidget * parent = 0);
 
 private slots:
     void openPaypalLink();

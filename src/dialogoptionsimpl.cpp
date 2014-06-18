@@ -23,8 +23,8 @@
 
 #include "dialogoptionsimpl.h"
 
-dialogOptionsImpl::dialogOptionsImpl( QWidget * parent, Qt::WFlags f) 
-	: QDialog(parent, f)
+dialogOptionsImpl::dialogOptionsImpl(QWidget * parent)
+	: QDialog(parent)
 {
 	setupUi(this);
 	opt = new Options;

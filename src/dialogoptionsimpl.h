@@ -35,7 +35,7 @@ class dialogOptionsImpl : public QDialog, public Ui::dialogOptions
 {
 Q_OBJECT
 public:
-	dialogOptionsImpl( QWidget * parent = 0, Qt::WFlags f = 0 );
+	dialogOptionsImpl( QWidget * parent = 0);
 
 private:
     QString autoDetect();
