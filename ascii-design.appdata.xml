@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2014 Francesco Mondello <faster3ck@gmail.com> -->
+<!-- Copyright 2014 Francesco Mondello -->
 <application>
  <id type="desktop">ascii-design.desktop</id>
  <metadata_license>CC0-1.0</metadata_license>
@@ -8,13 +8,16 @@
  <summary>Ascii Design is a free program to create awesome ascii art text</summary>
  <description>
   <p>
-   Ascii Design is a free program, based on figlet engine, that enables you to create awesome ascii art text. You can create art based text for many types of decorations for web sites, e-mail, text files etc...
-   Ascii Design is able to use dozens of special fonts to create various styles of ascii arts.
+   Ascii Design is a free program, based on figlet engine, that enables you to create awesome ascii art text.
+  </p>
+  <p>You can create art based text for many types of decorations for web sites, e-mail, text files etc...
+  </p>
+  <p>Ascii Design is able to use dozens of special fonts to create various styles of ascii arts.
   </p>
  </description>
  <screenshots>
   <screenshot type="default" width="818" height="545">http://ascii-design.sourceforge.net/ascii-design_kde.png</screenshot>
  </screenshots>
  <url type="homepage">http://ascii-design.sourceforge.net/</url>
- <updatecontact>faster3ck_AT_gmail.com</updatecontact>
+ <updatecontact>faster3ck@gmail.com</updatecontact>
 </application>
