@@ -92,6 +92,6 @@ if (Qt5Widgets_FOUND)
 endif()
 
 install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/ascii-design DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
-install(FILES icon/ascii-design.desktop DESTINATION ${CMAKE_INSTALL_PREFIX}/share/applications)
+install(FILES other/ascii-design.desktop DESTINATION ${CMAKE_INSTALL_PREFIX}/share/applications)
 install(FILES pics/ascii-design.png DESTINATION ${CMAKE_INSTALL_PREFIX}/share/pixmaps)
 install(FILES ascii-design.appdata.xml DESTINATION ${CMAKE_INSTALL_PREFIX}/share/appdata/)

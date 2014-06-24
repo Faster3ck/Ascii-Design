@@ -1,21 +1,21 @@
 ﻿Ascii Design is an ascii art editor written in C++.
-This program uses Qt4 libraries and figlet.
+This program uses Qt5 libraries and figlet.
 
 
 If you want to compile and INSTALL Ascii Design under linux you'll need cmake >= 2.4,
-Qt4 and figlet.
+Qt45 and figlet.
 
 a) Compiling and installing Ascii Design using cmake:
 
 mkdir build
 cd build
-cmake ..
+cmake -DCMAKE_INSTALL_PREFIX=/usr ..
 make
 make install (as root)
 
 b) Compiling Ascii Design without cmake:
 
-1. Run qmake (qt4 version);
+1. Run qmake (qt5 version);
 2. Run make
 
 To use Ascii Design you'll need to install figlet (http://www.figlet.org/) using your package manager.
@@ -25,5 +25,5 @@ Run Ascii Design and set figlet executable path and figlet fonts path from the o
 You can download additional figlet fonts at http://ascii-design.sourceforge.net//figlet_fonts.zip
 
 E-Mail: faster3ck@gmail.com
-Author web site: http://fasterindesign.altervista.org/
+Author web site: http://fasterland.net/
 Ascii Design: http://ascii-design.sourceforge.net/

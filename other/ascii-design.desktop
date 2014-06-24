@@ -1,9 +1,9 @@
 [Desktop Entry]
-Encoding=UTF-8
 Name=Ascii Design
-Comment=Start Ascii Design
+Comment=A tool to create ascii arts
+Comment[it]=Uno strumento per creare ascii art
 Exec=ascii-design
-Icon=ascii-design.png
+Icon=ascii-design
 Terminal=false
 Type=Application
 Categories=Office;
