@@ -3,7 +3,7 @@ This program uses Qt5 libraries and figlet.
 
 
 If you want to compile and INSTALL Ascii Design under linux you'll need cmake >= 2.4,
-Qt45 and figlet.
+Qt5 and figlet.
 
 a) Compiling and installing Ascii Design using cmake:
 
